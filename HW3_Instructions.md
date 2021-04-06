@@ -158,10 +158,12 @@ addition to keeping secrets secret, this method also allows for changing secrets
 more easily.
 
 For this part, your job will be to find some the places in which secrets are
-used and replace them with a more secure way of doing secrets. Specifically, you
-should look into Kubernetes secrets, how they work, and how they can be used
-with both kubernetes yaml files and how they may be accessed via Python (hint:
-they end up as environment variables).
+used and replace them with a more secure way of doing secrets. Specifically,
+you should look into Kubernetes secrets, how they work, and how they can be
+used with both kubernetes yaml files and how they may be accessed via Python
+(hint: they end up as environment variables). You may want to read the
+[Kubernetes documentation on
+secrets](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/).
 
 For this portion of the assignment, you should submit:
 
@@ -180,9 +182,10 @@ submission by tagging the desired commit with the tag "part_1_complete"
 ## Part 2: Applying Migrations
 
 In Django, when changes are made to the models of the application the developer
-performs database migrations to update the database. This ensures that the
-database reflects the changes made in the model. In addition, when the Database
-pod is first spawned it needs to be seeded with starting data, in this case
+performs database migrations to update the database (this is what the `python
+manage.py migrate` command from HW2 does). This ensures that the database
+reflects the changes made in the model. In addition, when the Database pod is
+first spawned it needs to be seeded with starting data, in this case
 information about the products.
 
 The way that Shoddycorp's Cut-Rate Contracting chose to do this is questionable.
@@ -197,7 +200,13 @@ once before we seed the database to ensure the proper tables are present.
 
 To achieve this we will use something called Kubernetes jobs. In this portion of
 the assignment you must write two Kubernetes jobs, one to apply migrations from
-Django and one to seed the Database. You will need to submit:
+Django and one to seed the Database. The migration job should be based on the
+Django site container and use Django's `manage.py` to run the migration. The
+database seeding job should load the data from the CSV files into the database
+by connecting to the database service and then inserting the data from the CSV
+files.
+
+You will need to submit:
 
 * One yaml file for the migrations job
 * One yaml file for the database seeding job
@@ -212,7 +221,7 @@ submission by tagging the desired commit with the tag "part_2_complete"
 ## Part 3: Monitoring with Prometheus
 
 It seems the DevOps employee at Shoddycorp's Cut-Rate Contracting decided to add
-some monitoring to the Web application using Prometheus. However, why they do
+some monitoring to the Web application using Prometheus. However, while they do
 seem to know how to use the Python Prometheus client to perform monitoring, they
 seem to struggle with understanding what your company may want to monitor. More,
 they seem to be using Prometheus' monitoring to monitor things that you want to
