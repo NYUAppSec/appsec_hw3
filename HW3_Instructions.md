@@ -37,7 +37,7 @@ you would like to mimic in any way.
 
 ## Frequently Asked Questions
 
-Kubernetes is a fairly complicated beast. To help you get oriented, we've created a [Frequently Asked Questions](FAQ.md) document that should help with common questions. As, always, please make use of office hours and ask questions by email when you run into trouble!
+Kubernetes is a fairly complicated beast. To help you get oriented, we've created a [Frequently Asked Questions](FAQ.md) document that should help with common questions. As, always, please make use of office hours and ask questions by email or Slack when you run into trouble!
 
 ## Part 0: Setting up Your Environment
 
@@ -64,9 +64,9 @@ so please ensure you still have Git installed. Though we will not be checking
 for them, remember that it is in your best interest to continue to follow git
 best practices.
 
-When you are ready to begin the project, please create a repository 
-on GitHub for your third assignment. Like before, be sure to make 
-the repository **private**.
+When you are ready to begin the project, please use GitHub Classroom to create
+your repository for this assignment, and do your work in that repository. The
+repository name will look like `NYUAppSec/homework-3-[username]`.
 
 ### Part 0.1: Rundown of Files
 
@@ -306,13 +306,7 @@ Part 3 is worth 30 points:
 
 ## What to Submit
 
-On NYU Classes, submit a link to your GitHub repository. The repository
-should be **private**, and you should add the instructor/TA's GitHub
-account as a contributor to give them access for grading.
-
-For this section, your instructor is: **moyix**
-
-Your TA is: **Manan-bit**
+**On NYU Classes, submit a link to your GitHub repository.**
 
 The repository should contain:
 
