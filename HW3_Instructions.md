@@ -22,9 +22,9 @@ each other as needed. They even began adding some event monitoring for a
 monitoring software called Prometheus, though they didn't finish it.
 
 However, upon further inspection we can see that they didn't quite do things
-right. They attempted to do Django migrations and database seeding using methods
-that don't really work, they only create one replica of each pod, and there are
-passwords floating around all over the place. All-in-all, it's a mess.
+right. They left secrets lying around out in the open, they only create one
+replica of each pod, and there are passwords getting logged all over the
+place. All-in-all, it's a mess.
 
 It looks like the job to fix this falls to you, again. Luckily Kevin Gallagher
 (KG) has read through the files already and pointed out some of the things that
@@ -77,11 +77,10 @@ modifying throughout this assignment.
 * GiftcardSite/LegacySite/views.py
 * GiftcardSite/k8/django-deploy.yaml
 * db/Dockerfile
-* db/setup.sql
 * db/k8/db-deployment.yaml
 
-In addition, you will likely need to make new files to work with Prometheus, as
-described in Part 3.
+In addition, you may need to make new files to work with Prometheus, as
+described in Part 2.
 
 ### Part 0.2: Getting it to Work 
 
@@ -179,46 +178,7 @@ update your pods using the kubectl apply commands specified earlier.
 When you are finished with this section, please mark your part 1 
 submission by tagging the desired commit with the tag "part_1_complete"
 
-## Part 2: Applying Migrations
-
-In Django, when changes are made to the models of the application the developer
-performs database migrations to update the database (this is what the `python
-manage.py migrate` command from HW2 does). This ensures that the database
-reflects the changes made in the model. In addition, when the Database pod is
-first spawned it needs to be seeded with starting data, in this case
-information about the products.
-
-The way that Shoddycorp's Cut-Rate Contracting chose to do this is questionable.
-They decided to create a new Dockerfile that modifies the default MYSQL docker
-image to include a sql script that both performs migrations and seeds the
-database at the same time. This only occurs when the pod is created, so in order
-to perform changes to the database the MYSQL pod must be destroyed and a new one
-must go up in its place. This is less than ideal. Instead, we want to be able to
-run migrations whenever there is a change in the models, and only seed the data
-once when the MYSQL Database is created. However, we need to apply migrations
-once before we seed the database to ensure the proper tables are present.
-
-To achieve this we will use something called Kubernetes jobs. In this portion of
-the assignment you must write two Kubernetes jobs, one to apply migrations from
-Django and one to seed the Database. The migration job should be based on the
-Django site container and use Django's `manage.py` to run the migration. The
-database seeding job should load the data from the CSV files into the database
-by connecting to the database service and then inserting the data from the CSV
-files.
-
-You will need to submit:
-
-* One yaml file for the migrations job
-* One yaml file for the database seeding job
-* Any Dockerfiles you used for these jobs (in separate, descriptively named 
-  folders)
-* Any code you wrote to perform database seeding.
-* A jobs.txt file that describes what you did in this section.
-
-When you finish this part of the assignment, please mark your part 2 
-submission by tagging the desired commit with the tag "part_2_complete"
-
-## Part 3: Monitoring with Prometheus
+## Part 2: Monitoring with Prometheus
 
 It seems the DevOps employee at Shoddycorp's Cut-Rate Contracting decided to add
 some monitoring to the Web application using Prometheus. However, while they do
@@ -238,7 +198,7 @@ pod and service for Kubernetes so it can monitor your application.
 
 Specifically, in this part you must:
 
-### Part 3.1: Remove unwanted monitoring.
+### Part 2.1: Remove unwanted monitoring.
 
 There exists some unsafe monitoring of sensitive data in views.py. Remove all
 monitoring that exposes any sensitive secrets.
@@ -246,7 +206,7 @@ monitoring that exposes any sensitive secrets.
 All changes in this section should occur in the GiftcardSite/LegacySite/views.py
 file.
 
-### Part 3.2: Expand reasonable monitoring.
+### Part 2.2: Expand reasonable monitoring.
 
 There are things we may want to monitor using Prometheus. In this part of the
 assignment you should add a Prometheus counter that counts all of the times we 
@@ -256,7 +216,7 @@ errors, so you should name this counter database_error_return_404.
 All changes in this section should occur in the GiftcardSite/LegacySite/views.py
 file.
 
-### Part 3.3: Add Prometheus
+### Part 2.3: Add Prometheus
 
 All of this data is pointless if it is not being collected. In this section you
 should add Prometheus to your Kubernetes cluster and use it to automatically
@@ -269,8 +229,8 @@ For this section you will submit all of the yaml files that you needed to run
 Prometheus, as well as a writeup called Prometheus.txt describing the steps you
 took to get it running.
 
-When you finish this part of the assignment, please mark your part 3 
-submission by tagging the desired commit with the tag "part_3_complete"
+When you finish this part of the assignment, please mark your part 2 
+submission by tagging the desired commit with the tag "part_2_complete"
 
 Hints:
 
@@ -284,20 +244,13 @@ Hints:
 
 Total points: 100
 
-Part 1 is worth 40 points:
+Part 1 is worth 70 points:
 
-* 20 points for the yaml files that use Kubernetes secrets.
-* 10 points for the changes to the Django code.
-* 10 points for the writeup.
+* 40 points for the yaml files that use Kubernetes secrets.
+* 15 points for the changes to the Django code.
+* 15 points for the writeup.
 
 Part 2 is worth 30 points:
-
-* 10 points for the kubernetes jobs
-* 5 points for modified and/or new Dockerfiles
-* 5 points for the code to seed the database
-* 10 points for the writeup.
-
-Part 3 is worth 30 points:
 
 * 5 points for removing dangerous monitoring
 * 5 points for expanding monitoring
@@ -316,16 +269,10 @@ The repository should contain:
   * A writeup called secrets.txt.
   * A commit with the above mentioned files tagged as part_1_complete.
 * Part 2
-  * Yaml files that create the Kubernetes jobs.
-  * Modified and/or new Dockerfiles.
-  * All code you wrote to seed the database.
-  * A writeup called jobs.txt.
-  * A commit with these files and code tagged as part_2_complete.
-* Part 3
   * A modified GiftcardSite/LegacySite/views.py file.
   * Your yaml files for running Prometheus.
   * A writeup called Prometheus.txt.
-  * A commit with these files and code tagged as part_3_complete.
+  * A commit with these files and code tagged as part_2_complete.
 
 ## Concluding Remarks
 
