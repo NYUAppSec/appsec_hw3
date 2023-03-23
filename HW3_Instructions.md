@@ -66,7 +66,7 @@ best practices.
 
 When you are ready to begin the project, please use GitHub Classroom to create
 your repository for this assignment, and do your work in that repository. The
-repository name will look like `NYUAppSec/homework-3-[username]`.
+repository name will look like `NYUAppSec/assignment-3-[username]`.
 
 ### Part 0.1: Rundown of Files
 
@@ -175,9 +175,6 @@ For this portion of the assignment, you should submit:
 Finally, rebuild your Docker container for the Django application, and then
 update your pods using the kubectl apply commands specified earlier.
 
-When you are finished with this section, please mark your part 1 
-submission by tagging the desired commit with the tag "part_1_complete"
-
 ## Part 2: Monitoring with Prometheus
 
 It seems the DevOps employee at Shoddycorp's Cut-Rate Contracting decided to add
@@ -226,11 +223,9 @@ Prometheus to Kubernetes can be found at the following links.
 https://prometheus.io/docs/introduction/overview/
 
 For this section you will submit all of the yaml files that you needed to run
-Prometheus, as well as a writeup called Prometheus.txt describing the steps you
+Prometheus, as well as a writeup called `prometheus.txt` describing the steps you
 took to get it running.
 
-When you finish this part of the assignment, please mark your part 2 
-submission by tagging the desired commit with the tag "part_2_complete"
 
 Hints:
 
@@ -244,9 +239,11 @@ Hints:
 
 Total points: 100
 
-Part 1 is worth 70 points:
+Part 0 is worth 10 points, but you are not required to submit anything; just get everything up and running!
 
-* 40 points for the yaml files that use Kubernetes secrets.
+Part 1 is worth 60 points:
+
+* 30 points for the yaml files that use Kubernetes secrets.
 * 15 points for the changes to the Django code.
 * 15 points for the writeup.
 
@@ -259,20 +256,16 @@ Part 2 is worth 30 points:
 
 ## What to Submit
 
-**On NYU Classes, submit a link to your GitHub repository.**
-
 The repository should contain:
 
 * Part 1
   * Your yaml files using Kubernetes secrets.
   * All files you changed from the GiftcardSite/ directory.
   * A writeup called secrets.txt.
-  * A commit with the above mentioned files tagged as part_1_complete.
 * Part 2
   * A modified GiftcardSite/LegacySite/views.py file.
   * Your yaml files for running Prometheus.
   * A writeup called Prometheus.txt.
-  * A commit with these files and code tagged as part_2_complete.
 
 ## Concluding Remarks
 
