@@ -35,7 +35,7 @@ Start by looking at what pods are running, and their states:
 kubectl get pods
 ```
 
-If a pod is in a state other than "Running", you can get more details about it:
+If a pod is in a state other than `Running`, you can get more details about it:
 
 ```
 kubectl describe pod <pod_name>
@@ -54,11 +54,12 @@ Finally, it might be helpful to run a shell inside the pod's container so that y
 kubectl exec --stdin --tty <pod_name> -- bash
 ```
 
-Some pods (e.g., the GiftcardSite pod) don't have bash installed, so you'll need to use `sh` instead.
+Some pods (e.g., the GiftcardSite pod) don't have Bash installed, so you'll need to use `sh` instead.
 
 ## Why can't kubectl find my Docker image?
 
-The most common reason is that you forgot to run `eval $(minikube docker-env)` before running `docker build`. This points the Docker client at the minikube Docker daemon.
+The most common reason is that you forgot to run `eval $(minikube docker-env)` before running `docker build`.
+This points to the Docker client at the minikube Docker daemon.
 
 Another common mistake is specifying the image version in the YAML file as `latest` (e.g., `my_image:latest`). This will make kubectl try to fetch the image from a remote repository, which will fail if it's an image you've created locally. You can override this behavior either by removing the `:latest` tag, or by adding `imagePullPolicy: Never` to the YAML file.
 
@@ -104,4 +105,22 @@ caterina:k8s moyix$ minikube service prometheus-server
 |-----------|-------------------|-------------|------------------------|
 🎉  Opening service default/prometheus-server in default browser...
 ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
+```
+
+## Other things to note
+* We recommend using the docker driver for minikube
+(you'll see a message like "✨ Using the docker driver based on existing profile" when running minikube start).
+If you find that it's using some other driver, run two commands listed below.
+There's a bit more information in the [documentation](https://minikube.sigs.k8s.io/docs/drivers/docker/).
+
+```Bash
+minikube delete
+minikube start --driver=docker
+```
+* When removing the mysql-related parts of the cluster,
+you might find that kubectl hangs waiting for the persistent volume claim to be deleted.
+A workaround is to run the following from another terminal window (or run it before trying to delete the mysql stuff).
+
+```Bash
+kubectl patch pvc mysql-pvc -p '{"metadata":{"finalizers":null}}'
 ```

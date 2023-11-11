@@ -6,10 +6,8 @@ Use the following commands to pull the latest updates.
 ```bash
 git remote add upstream https://github.com/NYUAppSec/appsec_hw3
 git fetch upstream
-git merge upstream/master
-
-# -- if this last line doesn't work (but it should! use this instead) --
 git merge upstream/master --allow-unrelated-histories
+git push
 ```
 
 ## Introduction

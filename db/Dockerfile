@@ -1,4 +1,4 @@
-FROM mysql:latest
+FROM mysql:8.0.29
 
 COPY ./products.csv /products.csv
 COPY ./users.csv /users.csv
