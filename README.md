@@ -250,33 +250,47 @@ Hints:
 
 Total points: 100
 
-Part 0 is worth 10 points, but you are not required to submit anything; get everything up and running!
+Part 0 is worth 20 points, but you are not required to submit anything; get everything up and running!
 
-Part 1 is worth 60 points:
+Part 1 is worth 40 points:
 
 * 30 points for the yaml files that use Kubernetes secrets.
 * 15 points for the changes to the Django code.
 * 15 points for the writeup.
 
-Part 2 is worth 30 points:
+Part 2 is worth 40 points:
 
-* 5 points for removing dangerous monitoring
-* 5 points for expanding monitoring
+* 10 points for removing dangerous monitoring
+* 10 points for expanding monitoring
 * 10 points for all yaml files for Prometheus
 * 10 points for the writeup.
 
 ## What to Submit
+To submit your code, please only submit a file called `git_link.txt` that contains the name of your repository. 
+For example, if your GitHub account username is exampleaccount, you would submit a text file named `git_link.txt` to 
+Gradescope with only one line that reads the following:
+
+    assignment-3-exampleaccount
+
+While there is no autograder for Fall 2023, it will be easy for the TA to find your repository and download it.
+
+Alongside your `git_link.txt`, to make life easier on the TA, so he won't need to search the write-ups, 
+submit the following write-ups too on Gradescope:
+
+* secrets.txt
+* Prometheus.txt
+
 
 The repository should contain:
 
 * Part 1
   * Your yaml files using Kubernetes secrets.
   * All files you changed from the GiftcardSite/ directory.
-  * A writeup called secrets.txt.
+  * A writeup called secrets.txt on the root of your repository
 * Part 2
   * A modified GiftcardSite/LegacySite/views.py file.
   * Your yaml files for running Prometheus.
-  * A writeup called Prometheus.txt.
+  * A writeup called Prometheus.txt on the root of your repository
 
 ## Concluding Remarks
 

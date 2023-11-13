@@ -1,5 +1,29 @@
 # Frequently Asked Questions
 
+## How do I interact with my docker images?
+To check what docker images you have built, run `docker image ls`, below is example output.
+
+```
+REPOSITORY                    TAG            IMAGE ID       CREATED        SIZE
+nyuappsec/assign3-db          v0             18756add02dd   2 days ago     444MB
+nyuappsec/assign3-proxy       v0             bab62e6f1d2d   2 days ago     47.6MB
+nyuappsec/assign3             v0             51c1d0517639   2 days ago     379MB
+```
+
+What if I want to delete a Docker image? run `docker image rm <REPOSITORY>/<TAG>`. 
+For example, if we want to delete `nyuappsec/assign3:v0`, run `docker image rm nyuappsec/assign3:v0`.
+You would see the following output,
+
+```commandline
+Untagged: nyuappsec/assign3:v0
+Deleted: sha256:51c1d05176395b10c4d2db6f7329fd9f099ef0f9ddca2865600ef5e67b03de73
+
+# docker image ls
+REPOSITORY                    TAG            IMAGE ID       CREATED        SIZE
+nyuappsec/assign3-db          v0             18756add02dd   2 days ago     444MB
+nyuappsec/assign3-proxy       v0             bab62e6f1d2d   2 days ago     47.6MB
+```
+
 ## How do I shut everything down and restart from scratch?
 
 You can use `kubectl delete -f` to remove the resources specified in a YAML file. So for the resources in this assignment:
