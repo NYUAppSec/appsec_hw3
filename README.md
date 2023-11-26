@@ -42,8 +42,7 @@ place. All-in-all, it's a mess.
 It looks like the job to fix this falls to you again.
 Luckily, Kevin Gallagher (KG) has read through the files already and pointed out some of the things that
 are going wrong, and provided a list of things for you to fix.
-Before you can
-work on that, though, let's get your environment set up.
+Before you can work on that, though, let's get your environment set up.
 
 Just a disclaimer, in case it needs to be said again: 
 Like with all Shoddycorp's Cut-Rate Contracting deliverables, this is not code
@@ -58,8 +57,7 @@ As always, please make use of office hours and ask questions on Ed Discussion.
 
 ## Part 0: Setting up Your Environment
 
-To complete this assignment, you will need Docker, minikube, and 
-kubectl.
+To complete this assignment, you will need Docker, minikube, and kubectl.
 Installing this is not simple, and is highly platform dependent.
 Rather than detail how to install this software on different platforms, this
 document instead links to the relevant information on how to install these tools
@@ -250,18 +248,18 @@ Hints:
 
 Total points: 100
 
-Part 0 is worth 10 points, but you are not required to submit anything; get everything up and running!
+Part 0 is worth 20 points, but you are not required to submit anything; get everything up and running!
 
-Part 1 is worth 60 points:
+Part 1 is worth 40 points:
 
-* 30 points for the yaml files that use Kubernetes secrets.
-* 15 points for the changes to the Django code.
-* 15 points for the writeup.
+* 20 points for the yaml files that use Kubernetes secrets.
+* 10 points for the changes to the Django code.
+* 10 points for the writeup.
 
-Part 2 is worth 30 points:
+Part 2 is worth 40 points:
 
-* 5 points for removing dangerous monitoring
-* 5 points for expanding monitoring
+* 10 points for removing dangerous monitoring
+* 10 points for expanding monitoring
 * 10 points for all yaml files for Prometheus
 * 10 points for the writeup.
 
@@ -276,7 +274,7 @@ The repository should contain:
 * Part 2
   * A modified GiftcardSite/LegacySite/views.py file.
   * Your yaml files for running Prometheus.
-  * A writeup called Prometheus.txt.
+  * A writeup called prometheus.txt.
 
 ## Concluding Remarks
 
