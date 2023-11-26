@@ -264,13 +264,27 @@ Part 2 is worth 40 points:
 * 10 points for the writeup.
 
 ## What to Submit
+To submit your code, please only submit a file called `git_link.txt` that contains the name of your repository. 
+For example, if your GitHub account username is exampleaccount, you would submit a text file named `git_link.txt` to 
+Gradescope with only one line that reads the following:
+
+    assignment-3-exampleaccount
+
+While there is no autograder for Fall 2023, it will be easy for the TA to find your repository and download it.
+
+Alongside your `git_link.txt`, to make life easier on the TA, so he won't need to search the write-ups, 
+submit the following write-ups too on Gradescope:
+
+* secrets.txt
+* Prometheus.txt
+
 
 The repository should contain:
 
 * Part 1
   * Your yaml files using Kubernetes secrets.
   * All files you changed from the GiftcardSite/ directory.
-  * A writeup called secrets.txt.
+  * A writeup called secrets.txt on the root of your repository
 * Part 2
   * A modified GiftcardSite/LegacySite/views.py file.
   * Your yaml files for running Prometheus.
