@@ -268,27 +268,27 @@ To submit your code, please only submit a file called `git_link.txt` that contai
 For example, if your GitHub account username is exampleaccount, you would submit a text file named `git_link.txt` to 
 Gradescope with only one line that reads the following:
 
-    assignment-3-exampleaccount
+    appsec-homework-3-exampleaccount
 
-While there is no autograder for Fall 2023, it will be easy for the TA to find your repository and download it.
+The TA will also be looking for the following files on your Gradescope:
 
-Alongside your `git_link.txt`, to make life easier on the TA, so he won't need to search the write-ups, 
-submit the following write-ups too on Gradescope:
+    bugs.txt
+    encryption_explanation.txt
 
-* secrets.txt
-* Prometheus.txt
-
+Having the write-ups uploaded makes it easier for the TA to grade the write-up as it saves them time traversing your GitHub repository. 
+Please be sure to have your written parts in your repository too, and the files are expected to be exactly the same as what is uploaded to Gradescope. 
+This will be verified by the autograder hashing the write-up found in the root of your repository and uploaded write-ups.
 
 The repository should contain:
 
 * Part 1
   * Your yaml files using Kubernetes secrets.
   * All files you changed from the GiftcardSite/ directory.
-  * A writeup called secrets.txt on the root of your repository
+  * A writeup called secrets.txt on the root of your repository.
 * Part 2
   * A modified GiftcardSite/LegacySite/views.py file.
   * Your yaml files for running Prometheus.
-  * A writeup called prometheus.txt.
+  * A writeup called prometheus.txt on the root of your repository.
 
 ## Concluding Remarks
 
