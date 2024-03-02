@@ -289,7 +289,7 @@ The repository should contain:
   * A writeup called secrets.txt on the root of your repository.
 * Part 2
   * A modified GiftcardSite/LegacySite/views.py file.
-  * Your yaml files for running Prometheus.
+  * Your yaml files for running Prometheus. Files should be prefixed with ```prometheus-```.
   * A writeup called prometheus.txt on the root of your repository.
 
 ## Concluding Remarks
