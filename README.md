@@ -244,6 +244,8 @@ Hints:
 
 * Each running service gets a DNS name that corresponds to the service name. So to refer to the proxy running on port 8080, you would use `proxy-service:8080`.
 
+* You can see what the final result of Part 2 will look like [here](./FAQ.md#how-do-i-know-if-i-have-finished-part-2).
+
 ## Grading
 
 Total points: 100
@@ -287,7 +289,7 @@ The repository should contain:
   * A writeup called secrets.txt on the root of your repository.
 * Part 2
   * A modified GiftcardSite/LegacySite/views.py file.
-  * Your yaml files for running Prometheus.
+  * Your yaml files for running Prometheus. Files should be prefixed with ```prometheus-```.
   * A writeup called prometheus.txt on the root of your repository.
 
 ## Concluding Remarks

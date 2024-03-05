@@ -131,6 +131,25 @@ caterina:k8s moyix$ minikube service prometheus-server
 ❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
 ```
 
+## How do I know if metrics are being scraped?
+You can check the `/metrics` endpoint to verify any new targets, notice the database_error target in this image:
+
+![Metrics Endpoint](assets/metrics.png)
+
+## How do I know if I set up the proxy job correctly in configmaps?
+The proxy-job entry in the Prometheus targets page represents a monitoring job configured to scrape metrics from a service running at http://proxy-service:8080/metrics.
+This image shows proxy-job is currently up, meaning Prometheus can successfully reach and retrieve metrics from it.
+
+![Proxy Job](assets/targets.png)
+
+## How do I know if I have finished Part 2?
+This image is a Prometheus graph displaying a metric named database_error_return_404_total. It represents the total count of 404 Not Found errors returned by a database over the past 12 hours. The graph's flat line for the majority of the time indicates a lack of these errors or a constant count. Notably, there's a sharp rise towards the end, signaling a sudden increase in 404 errors. This is because I manually caused the error by visiting a page that resulted in error 404, then after waiting a few moments for the scrape, I can view the increase in the graph.
+![Graph](assets/graph.png)
+
+Here is a gif demonstrating the various actions and activities you can use Prometheus for.
+![Prometheus Animation](assets/prometheus.gif)
+
+
 ## Other things to note
 * We recommend using the docker driver for minikube
 (you'll see a message like "✨ Using the docker driver based on existing profile" when running minikube start).
