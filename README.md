@@ -195,10 +195,10 @@ On the root of your repository, ensure the sealed secret YAML file is called `pa
 
 For this portion of the assignment, you should submit:
 
-1. All kubernetes yaml files created/modified to use secrets
+1. All kubernetes yaml files created/modified to use sealed secrets
 2. All changes necessary to the Web application (limited to 
    settings.py as mentioned above) needed to use the passed secrets.
-3. A file, called secrets.txt, which demonstrates how you added the secrets.
+3. A file, called secrets.txt, which demonstrates how you added the sealed secrets.
    This must include all commands used, etc.
 
 Finally, rebuild your Docker container for the Django application, and then
@@ -289,7 +289,7 @@ Part 1 is worth 20 points:
 
 Part 2 is worth 40 points:
 
-* 20 points for the yaml files that use Kubernetes secrets.
+* 20 points for the yaml files that use Kubernetes sealed secrets.
 * 10 points for the changes to the Django code.
 * 10 points for the writeup.
 
