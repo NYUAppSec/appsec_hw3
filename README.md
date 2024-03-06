@@ -55,7 +55,7 @@ To help you get oriented,
 we've created a [Frequently Asked Questions](FAQ.md) document that should help with common questions.
 As always, please make use of office hours and ask questions on Ed Discussion.
 
-## Part 0: Setting up Your Environment
+## Part 1: Setting up Your Environment
 
 To complete this assignment, you will need Docker, minikube, and kubectl.
 Installing this is not simple, and is highly platform dependent.
@@ -78,7 +78,7 @@ When you are ready to begin the project, please use GitHub Classroom to create
 your repository for this assignment, and do your work in that repository. The
 repository name will look like `NYUAppSec/assignment-3-[username]`.
 
-### Part 0.1: Rundown of Files
+### Part 1.1: Rundown of Files
 
 This repository has a lot of files. The following are files you will likely be
 modifying throughout this assignment.
@@ -92,7 +92,7 @@ modifying throughout this assignment.
 In addition, you may need to make new files to work with Prometheus, as
 described in Part 2.
 
-### Part 0.2: Getting it to Work 
+### Part 1.2: Getting it to Work 
 
 Once you have installed the necessary software, you are ready to run the whole thing
 using minikube. First, start minikube.
@@ -157,7 +157,23 @@ This should open your browser to the deployed site. You should be able to view
 the first page of the site and navigate around. If this worked, you are ready
 to move on to the next part.
 
-## Part 1: Securing Secrets.
+
+### Part 1.3: Git Signature and Pushing to DockerHub
+To remain consistent with our other coding assignments, please complete the following:
+
+* At least one signed git commit 
+* Use GitHub Actions to automate deploying your Django container to [DockerHub](https://hub.docker.com/).
+  * Create an account on DockerHub. Ideally, you would store your login values in GitHub secrets. If you cannot, just use environment variables, but assume this account can be compromised, do not put anything sensitive on your DockerHub.
+  * Use this [GitHub Action](https://github.com/docker/build-push-action) on how to set up an action to push an image to DockerHub. Push your Django Docker Image to a DockerHub repository.
+
+To submit this part, push the `hw3p1handin` tag with the following:
+```commandline
+git tag -a -m "Completed hw3 part1." hw3p1handin
+git push origin main
+git push origin hw3p1handin
+```
+
+## Part 2: Securing Secrets.
 
 Unfortunately, there are many values that are supposed to be secret floating
 around in the source code and in the yaml files.
@@ -169,15 +185,17 @@ more easily.
 
 For this part, your job will be to find some of the places in which secrets are
 used and replace them with a more secure way of doing secrets. Specifically,
-you should look into Kubernetes secrets, how they work, and how they can be
-used with both kubernetes yaml files and how they may be accessed via Python
+you should look into Kubernetes [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets), 
+how they work, and how they can be used with both kubernetes yaml files and how they may be accessed via Python
 (hint: they end up as environment variables). You may want to read the
-[Kubernetes documentation on
-secrets](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/).
+[Kubernetes documentation on secrets](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/).
+
+To complete this assignment, determine which two values must be secrets in your sealed secret YAML file. 
+On the root of your repository, ensure the sealed secret YAML file is called `part1.yaml`.
 
 For this portion of the assignment, you should submit:
 
-1. All kubernetes yaml files modified to use secrets
+1. All kubernetes yaml files created/modified to use secrets
 2. All changes necessary to the Web application (limited to 
    settings.py as mentioned above) needed to use the passed secrets.
 3. A file, called secrets.txt, which demonstrates how you added the secrets.
@@ -186,7 +204,14 @@ For this portion of the assignment, you should submit:
 Finally, rebuild your Docker container for the Django application, and then
 update your pods using the kubectl apply commands specified earlier.
 
-## Part 2: Monitoring with Prometheus
+To submit this part, push the `hw3p1handin` tag with the following:
+```commandline
+git tag -a -m "Completed hw3 part2." hw3p2handin
+git push origin main
+git push origin hw3p2handin
+```
+
+## Part 3: Monitoring with Prometheus
 
 It seems the DevOps employee at Shoddycorp's Cut-Rate Contracting decided to add
 some monitoring to the Web application using Prometheus. However, while they do
@@ -206,7 +231,7 @@ pod and service for Kubernetes, so it can monitor your application.
 
 Specifically, in this part, you must:
 
-### Part 2.1: Remove unwanted monitoring.
+### Part 3.1: Remove unwanted monitoring.
 
 There exists some unsafe monitoring of sensitive data in views.py. Remove all
 monitoring that exposes any sensitive secrets.
@@ -214,7 +239,7 @@ monitoring that exposes any sensitive secrets.
 All changes in this section should occur in the GiftcardSite/LegacySite/views.py
 file.
 
-### Part 2.2: Expand reasonable monitoring.
+### Part 3.2: Expand reasonable monitoring.
 
 There are things we may want to monitor using Prometheus. In this part of the
  assignment, you should add a Prometheus counter that counts all the times we 
@@ -224,7 +249,7 @@ errors, so you should name this counter database_error_return_404.
 All changes in this section should occur in the GiftcardSite/LegacySite/views.py
 file.
 
-### Part 2.3: Add Prometheus
+### Part 3.3: Add Prometheus
 
 All of this data is pointless if it is not being collected. In this section, you
 should add Prometheus to your Kubernetes cluster and use it to automatically
@@ -246,19 +271,29 @@ Hints:
 
 * You can see what the final result of Part 2 will look like [here](./FAQ.md#how-do-i-know-if-i-have-finished-part-2).
 
+To submit this part, push the `hw3p1handin` tag with the following:
+```commandline
+git tag -a -m "Completed hw3 part3." hw3p3handin
+git push origin main
+git push origin hw3p3handin
+```
+
 ## Grading
 
 Total points: 100
 
-Part 0 is worth 20 points, but you are not required to submit anything; get everything up and running!
+Part 1 is worth 20 points:
 
-Part 1 is worth 40 points:
+* 10 points for signed commits.
+* 10 points for GitHub Actions configuration.
+
+Part 2 is worth 40 points:
 
 * 20 points for the yaml files that use Kubernetes secrets.
 * 10 points for the changes to the Django code.
 * 10 points for the writeup.
 
-Part 2 is worth 40 points:
+Part 3 is worth 40 points:
 
 * 10 points for removing dangerous monitoring
 * 10 points for expanding monitoring
@@ -274,8 +309,8 @@ Gradescope with only one line that reads the following:
 
 The TA will also be looking for the following files on your Gradescope:
 
-    bugs.txt
-    encryption_explanation.txt
+    secrets.txt
+    prometheus.txt
 
 Having the write-ups uploaded makes it easier for the TA to grade the write-up as it saves them time traversing your GitHub repository. 
 Please be sure to have your written parts in your repository too, and the files are expected to be exactly the same as what is uploaded to Gradescope. 
@@ -284,12 +319,15 @@ This will be verified by the autograder hashing the write-up found in the root o
 The repository should contain:
 
 * Part 1
-  * Your yaml files using Kubernetes secrets.
+  * At least one signed git commit
+  * A GitHub Actions YML that uploads a docker image to Docker Hub
+* Part 2
+  * Your yaml file, `part1.yaml` using Kubernetes sealed secrets.
   * All files you changed from the GiftcardSite/ directory.
   * A writeup called secrets.txt on the root of your repository.
-* Part 2
+* Part 3
   * A modified GiftcardSite/LegacySite/views.py file.
-  * Your yaml files for running Prometheus. Files should be prefixed with ```prometheus-```.
+  * Your config map yaml file for running Prometheus. The file should be at the root of your repository and called `prometheus.yaml`.
   * A writeup called prometheus.txt on the root of your repository.
 
 ## Concluding Remarks
