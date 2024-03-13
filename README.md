@@ -58,7 +58,7 @@ As always, please make use of office hours and ask questions on Ed Discussion.
 ## Part 1: Setting up Your Environment
 
 To complete this assignment, you will need Docker, minikube, and kubectl.
-Installing this is not simple, and is highly platform dependent.
+Installing this is not simple, and is highly platform-dependent.
 Rather than detail how to install this software on different platforms, this
 document instead links to the relevant information on how to install these tools
 at their official sites.
@@ -76,7 +76,7 @@ best practices.
 
 When you are ready to begin the project, please use GitHub Classroom to create
 your repository for this assignment, and do your work in that repository. The
-repository name will look like `NYUAppSec/assignment-3-[username]`.
+repository name will look like `NYUAppSec/appsec-homework-3-[username]`.
 
 ### Part 1.1: Rundown of Files
 
@@ -204,7 +204,7 @@ For this portion of the assignment, you should submit:
 Finally, rebuild your Docker container for the Django application, and then
 update your pods using the kubectl apply commands specified earlier.
 
-To submit this part, push the `hw3p1handin` tag with the following:
+To submit this part, push the `hw3p2handin` tag with the following:
 ```commandline
 git tag -a -m "Completed hw3 part2." hw3p2handin
 git push origin main
@@ -271,7 +271,7 @@ Hints:
 
 * You can see what the final result of Part 2 will look like [here](./FAQ.md#how-do-i-know-if-i-have-finished-part-2).
 
-To submit this part, push the `hw3p1handin` tag with the following:
+To submit this part, push the `hw3p3handin` tag with the following:
 ```commandline
 git tag -a -m "Completed hw3 part3." hw3p3handin
 git push origin main
