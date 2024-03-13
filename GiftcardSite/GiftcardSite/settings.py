@@ -12,10 +12,14 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import base64
+# https://pypi.org/project/django-environ/
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -27,8 +31,8 @@ SECRET_KEY = 'kmgysa#fz+9(z1*=c0ydrjizk*7sthm2ga1z4=^61$cxcq8b$l'
 DEBUG = bool(int(os.environ.get('DEBUG', 0)))
 
 ALLOWED_HOSTS = ['*']
-#ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS')
-#if ALLOWED_HOSTS_ENV:
+# ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS')
+# if ALLOWED_HOSTS_ENV:
 #    ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(','))
 
 
@@ -140,8 +144,8 @@ FONT_ROOT = os.path.join(BASE_DIR, "templates/fonts")
 # Random Seed for testing
 RANDOM_SEED = base64.b64decode("2RUHYAyJWdDdXOicZfnTRw==")
 
-#AUTH_USER_MODEL
-#AUTH_USER_MODEL = 'LegacySite.User'
+# AUTH_USER_MODEL
+# AUTH_USER_MODEL = 'LegacySite.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -155,7 +159,7 @@ MEDIA_ROOT = '/vol/web/media'
 # Auth Backends
 AUTHENTICATION_BACKENDS = ['LegacySite.models.OurBackend']
 
-# DO NOT delete line 156-158, this is for using Django/Gradescope integration
+# DO NOT delete line 163-167, this is for using Django/Gradescope integration
 # Also used for my own testing of autograder
 RUN_GITHUB_ACTIONS = os.environ.get('GITHUB', 'no')
 if os.path.exists('/autograder/results') and os.path.isdir('/autograder/results') or RUN_GITHUB_ACTIONS == 'yes':
