@@ -1,15 +1,5 @@
 # Homework 3: Deployment Gone Wrong
 
-## Get Latest updates
-
-Use the following commands to pull the latest updates.
-```bash
-git remote add upstream https://github.com/NYUAppSec/appsec_hw3
-git fetch upstream
-git merge upstream/main --allow-unrelated-histories
-git push
-```
-
 ## Introduction
 
 Right when you thought things couldn't get worse, your company decided to
@@ -59,9 +49,11 @@ As always, please make use of office hours and ask questions on Ed Discussion.
 
 To complete this assignment, you will need Docker, minikube, and kubectl.
 Installing this is not simple, and is highly platform-dependent.
-Rather than detail how to install this software on different platforms, this
-document instead links to the relevant information on how to install these tools
-at their official sites.
+Don't forget the setup scripts we've created to [help you along.](https://github.com/NYUAppSec/appsec-env-setup-script)
+
+Keep in mind, everything operating system environment is different, it is best to try and perform the work within a Linux distribution. 
+Rather than detail how to install this software on different platforms, below are links to relevant information on how to install these tools (if you chose not to use the scripts)
+at their official sites, as well as how to operate them. 
 
 To install Docker, please see the following Website and select [Docker Desktop.](https://www.docker.com/get-started)
 
@@ -69,7 +61,7 @@ To install Kubectl, please see the following [Website.](https://kubernetes.io/do
 
 To install Minikube, please see the following [Website.](https://minikube.sigs.k8s.io/docs/start/)
 
-Like in the previous assignments, we will be using Git and GitHub for submission,
+As in the previous assignments, we will be using Git and GitHub for submission,
 so please ensure you still have Git installed. Though we will not be checking
 for them, remember that it is in your best interest to continue to follow git
 best practices.
@@ -77,6 +69,18 @@ best practices.
 When you are ready to begin the project, please use GitHub Classroom to create
 your repository for this assignment, and do your work in that repository. The
 repository name will look like `NYUAppSec/appsec-homework-3-[username]`.
+
+## Get Latest updates
+
+It is always good to pull the latest updates before you continue your work.
+
+Use the following commands to pull the latest updates.
+```bash
+git remote add upstream https://github.com/NYUAppSec/appsec_hw3
+git fetch upstream
+git merge upstream/main --allow-unrelated-histories
+git push
+```
 
 ### Part 1.1: Rundown of Files
 
@@ -92,24 +96,49 @@ modifying throughout this assignment.
 In addition, you may need to make new files to work with Prometheus, as
 described in Part 2.
 
-### Part 1.2: Getting it to Work 
+### Part 1.2.a: Getting it to Work 
 
 Once you have installed the necessary software, you are ready to run the whole thing
 using minikube. First, start minikube.
 
-```
+```bash
 minikube start
 ```
 
-You will also need to set things up so that docker will use minikube by running:
+#### Troubleshooting
 
-```
-eval $(minikube docker-env)
-```
+ If you encounter issues such as "Unable to pick a default driver" or if Docker is not healthy, read the error messages carefully.
+ 
+ Verify that Docker is running correctly. This command is very useful:
+ 
+ ```bash
+ docker info
+ ```
+ 
+ If you have a permission issue you may need add your user to the Docker group to avoid permission issues:
+ ```bash
+ sudo usermod -aG docker $USER
+ newgrp docker
+ ```
+ 
+ It is good practice to check your 'docker info' to see if there are still issues. If not, try 'minikube start' again.
+ 
+ If you still have issues still you may need to explicitly set Minikube to use the Docker driver (virtualbox for example is 'minikube config set driver virtualbox'):
+ ```bash
+ minikube config set driver docker
+ ```
+ 
+ Finally, you might also need to run the following command to configure your shell to use Docker with Minikube:
+ 
+ ```bash
+ eval $(minikube docker-env)
+ ```
+
+### Part 1.2.b: Getting it to Work 
 
 Next, we need to build the Dockerfiles Kubernetes will use to create the
 cluster. This can be done using the following lines, assuming you are in the
-root directory of the repository.
+root directory of the repository. These take time to build, be patient.
 
 ```
 docker build -t nyuappsec/assign3:v0 .
