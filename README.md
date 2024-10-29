@@ -48,10 +48,10 @@ As always, please make use of office hours and ask questions on Ed Discussion.
 ## Part 1: Setting up Your Environment
 
 To complete this assignment, you will need Docker, minikube, and kubectl.
-Installing this is not simple, and is highly platform-dependent.
-Don't forget the setup scripts we've created to [help you along.](https://github.com/NYUAppSec/appsec-env-setup-script)
+Installation is not simple, and is highly platform-dependent.
+We recommend you look at the setup scripts we've created to [help you along.](https://github.com/NYUAppSec/appsec-env-setup-script)
 
-Keep in mind, everything operating system environment is different, it is best to try and perform the work within a Linux distribution. 
+Every operating system environment is different, we recommend you try and perform the assignment work within a Linux distribution. 
 Rather than detail how to install this software on different platforms, below are links to relevant information on how to install these tools (if you chose not to use the scripts)
 at their official sites, as well as how to operate them. 
 
@@ -62,8 +62,7 @@ To install Kubectl, please see the following [Website.](https://kubernetes.io/do
 To install Minikube, please see the following [Website.](https://minikube.sigs.k8s.io/docs/start/)
 
 As in the previous assignments, we will be using Git and GitHub for submission,
-so please ensure you still have Git installed. Though we will not be checking
-for them, remember that it is in your best interest to continue to follow git
+so please ensure you still have Git installed. Remember to continue to follow git
 best practices.
 
 When you are ready to begin the project, please use GitHub Classroom to create
@@ -72,7 +71,7 @@ repository name will look like `NYUAppSec/appsec-homework-3-[username]`.
 
 ## Get Latest updates
 
-It is always good to pull the latest updates before you continue your work.
+It is always good to pull the latest updates for your repository before you continue your work.
 
 Use the following commands to pull the latest updates.
 ```bash
@@ -93,8 +92,7 @@ modifying throughout this assignment.
 * db/Dockerfile
 * db/k8/db-deployment.yaml
 
-In addition, you may need to make new files to work with Prometheus, as
-described in Part 2.
+In addition, you may need to make new files in order to work with Prometheus (see Part 2).
 
 ### Part 1.2.a: Getting it to Work 
 
@@ -115,13 +113,15 @@ minikube start
  docker info
  ```
  
- If you have a permission issue you may need add your user to the Docker group to avoid permission issues:
+ If you have a permission issue you may need add your user to the Docker group:
+
  ```bash
  sudo usermod -aG docker $USER
  newgrp docker
  ```
+Insight: '-a' stands for "append" and adds the user to the specified group without removing them from other groups they might already belong to. 'G' specifies the group that you want to add the user to. '$USER' is an environment variable that automatically holds the name of the currently logged-in user. You should know all about environment variables from Assignment 2. 
  
- It is good practice to check your 'docker info' to see if there are still issues. If not, try 'minikube start' again.
+ It is good practice to check 'docker info' to see if there are still issues after the above permissioning. If not, try 'minikube start' again.
  
  If you still have issues still you may need to explicitly set Minikube to use the Docker driver (virtualbox for example is 'minikube config set driver virtualbox'):
  ```bash
@@ -167,7 +167,7 @@ There should be three pod entries:
 * One that starts with mysql-container
 * One that starts with proxy
 
-They should each have status RUNNING after approximately a minute.
+They should each have status RUNNING after approximately a minute, this depends on the resources your local machine has available.
 
 There should also be four service entries:
 
@@ -182,9 +182,7 @@ To see if you can connect to the site, run the following command:
 minikube service proxy-service
 ```
 
-This should open your browser to the deployed site. You should be able to view
-the first page of the site and navigate around. If this worked, you are ready
-to move on to the next part.
+This should open your browser to the deployed site. You should be able to view the first page of the site and navigate around. If this worked, you are ready to move on to the next part. If you are using WSL (Windows) or another virtual machine without graphical user interface, keep in mind how your localhost loopback works for access in your native environment (or research it). 
 
 
 ### Part 1.3: Git Signature and Pushing to DockerHub
@@ -245,7 +243,7 @@ git push origin hw3p2handin
 It seems the DevOps employee at Shoddycorp's Cut-Rate Contracting decided to add
 some monitoring to the Web application using Prometheus. However, while they do
 seem to know how to use the Python Prometheus client to perform monitoring, they
-seem to struggle with understanding what your company may want to monitor. More,
+seem to struggle with understanding what your company may want to monitor. Moreover,
 they seem to be using Prometheus' monitoring to monitor things that you want to
 remain secret!
 
@@ -292,11 +290,11 @@ took to get it running.
 
 Hints:
 
-* You probably want to look into `helm`, a package manager for kubernetes that makes it easy to install services like Prometheus.
+* You probably want to look into `helm`, a package manager for kubernetes that makes it easy to install services like Prometheus. Not required, but recommended due to ease of use.
 
 * To configure Prometheus, you probably want to use `configmaps`, which are a way of providing configuration information to running pods. You can see what configmaps are available by using `kubectl get configmaps`, and output their current configuration by doing `kubectl get configmap <service_name> -o yaml`. You can also directly edit the configuration with `kubectl edit configmap <service_name>`.
 
-* Each running service gets a DNS name that corresponds to the service name. So to refer to the proxy running on port 8080, you would use `proxy-service:8080`.
+* Each running service gets a DNS name that corresponds to the service name. So to refer to the proxy running on port 8080, you would use `proxy-service:8080`. Remember every DNS name maps to a corresponding IP. 
 
 * You can see what the final result of Part 2 will look like [here](./FAQ.md#how-do-i-know-if-i-have-finished-part-2).
 
@@ -320,14 +318,14 @@ Part 2 is worth 40 points:
 
 * 20 points for the yaml files that use Kubernetes sealed secrets.
 * 10 points for the changes to the Django code.
-* 10 points for the writeup.
+* 10 points for the writeup covering your work in Part 1 (mainly GitHub Actions) and Part 2.
 
 Part 3 is worth 40 points:
 
 * 10 points for removing dangerous monitoring
 * 10 points for expanding monitoring
 * 10 points for all yaml files for Prometheus
-* 10 points for the writeup.
+* 10 points for the writeup covering your work in Part 3.
 
 ## What to Submit
 To submit your code, please only submit a file called `git_link.txt` that contains the name of your repository. 
