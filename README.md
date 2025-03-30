@@ -36,10 +36,6 @@ As in the previous assignments, we will be using Git and GitHub for submission,
 so please ensure you still have Git installed. Remember to continue to follow git
 best practices.
 
-When you are ready to begin the project, please use GitHub Classroom to create
-your repository for this assignment, and do your work in that repository. The
-repository name will look like `NYUAppSecCF/assignment-3-module-1-[username]`.
-
 ## Get Latest updates
 
 It is always good to pull the latest updates for your repository before you continue your work.
