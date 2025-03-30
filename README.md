@@ -40,18 +40,6 @@ When you are ready to begin the project, please use GitHub Classroom to create
 your repository for this assignment, and do your work in that repository. The
 repository name will look like `NYUAppSecCF/assignment-3-module-1-[username]`.
 
-## Get Latest updates
-
-It is always good to pull the latest updates for your repository before you continue your work.
-
-Use the following commands to pull the latest updates.
-```bash
-git remote add upstream https://github.com/NYUAppSec/appsec_hw3
-git fetch upstream
-git merge upstream/main --allow-unrelated-histories
-git push
-```
-
 ### Step 1.1: Rundown of Files
 
 This repository has a lot of files. The following are files you will likely be
