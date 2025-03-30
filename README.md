@@ -176,3 +176,5 @@ git push origin main
 git push origin assign3mod1handin
 ```
 **DO NOT PUSH THIS TAG UNTIL YOU WANT TO BE GRADED**
+
+**The autograder may take some time to process this assignment, as it rebuilds your Docker image and verifies the entire Kubernetes setup. Please be patient and allow Gradescope to finish before resubmitting.**
