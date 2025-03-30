@@ -98,6 +98,8 @@ Insight: '-a' stands for "append" and adds the user to the specified group witho
  ```bash
  minikube config set driver docker
  ```
+
+Remember, hints are there for a reason! ```bash❗  These changes will take effect upon a minikube delete and then a minikube start```.
  
  Finally, you might also need to run the following command to configure your shell to use Docker with Minikube:
  
