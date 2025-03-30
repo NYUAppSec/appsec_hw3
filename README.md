@@ -166,10 +166,14 @@ To remain consistent with our other coding assignments, please complete the foll
 * At least one signed git commit 
 * Use GitHub Actions to automate deploying your Django container to [DockerHub](https://hub.docker.com/).
   * Create an account on DockerHub. Ideally, you would store your login values in GitHub secrets. If you cannot, just use environment variables, but assume this account can be compromised, do not put anything sensitive on your DockerHub.
-  * Use this [GitHub Action](https://github.com/docker/build-push-action) on how to set up an action to push an image to DockerHub. Push your Django Docker Image to a DockerHub repository.
+  * This is a decent template to follow [GitHub Action](https://github.com/docker/build-push-action) on how to set up an action to push an image to DockerHub. Push your Django Docker Image to a DockerHub repository.
 
 
 ### Ready for Grading
+
+This module is straightforward—follow the steps carefully and keep the SECRET_KEY secure as well as any DockerHub login credentials, and you'll earn full credit.
+
+Avoid breaking Docker, Kubernetes, or Django files, as errors will be flagged by the autograder. The module is designed to pass Gradescope as-is. Just set it up, then configure Secrets and GitHub Actions to deploy to DockerHub.
 
 Feel free to start submitting on gradescope to see how you would score. Once you want to lock in your grade push the `assign3mod1handin` tag with the following:
 
