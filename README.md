@@ -36,6 +36,19 @@ As in the previous assignments, we will be using Git and GitHub for submission,
 so please ensure you still have Git installed. Remember to continue to follow git
 best practices.
 
+#### Image Versions
+
+You may see something similar to the below:
+```
+🆕  Kubernetes 1.32.0 is now available. If you would like to upgrade, specify: --kubernetes-version=v1.32.0
+✨  Using the docker driver based on existing profile
+👍  Starting "minikube" primary control-plane node in "minikube" cluster
+🚜  Pulling base image v0.0.46 ...
+🔄  Restarting existing docker container for "minikube" ...
+❗  Image was not built for the current minikube version. To resolve this you can delete and recreate your minikube cluster using the latest images. Expected minikube version: v1.34.0 -> Actual minikube version: v1.35.0
+```
+
+Version mismatches like this are common! The ❗ symbol indicates a version mismatch warning—in this case, the image was built for Minikube v1.34.0, but you're running Minikube v1.35.0. This can lead to compatibility issues. Such mismatches often occur when teams upgrade to newer versions without properly managing dependencies. The fix? You may need to delete and recreate the Minikube cluster to align versions - if the versions even align, either way, worthy of a discussion in your writeups in future modules. Looks like Shoddy Corp didn’t handle their update policies very well!
 
 When you are ready to begin the project, please use GitHub Classroom to create
 your repository for this assignment, and do your work in that repository. The
