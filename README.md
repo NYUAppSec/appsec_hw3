@@ -20,9 +20,9 @@ Kubernetes is a fairly complicated beast. To help you get oriented, we've create
 
 To complete this assignment, you will need Docker, minikube, and kubectl.
 Installation is not simple, and is highly platform-dependent.
-We recommend you look at the setup scripts we've created to [help you along.](https://github.com/NYUAppSec/appsec-env-setup-script)
+We recommend you look at the setup script we created and is included in this repository, named 'setup.sh'. 
 
-Every operating system environment is different, we recommend you try and perform the assignment work within a Linux distribution. 
+Every operating system environment is different, we recommend you try and perform the assignment work within a Linux distribution, preferable Ubuntu.
 Rather than detail how to install this software on different platforms, below are links to relevant information on how to install these tools (if you chose not to use the scripts)
 at their official sites, as well as how to operate them. 
 
