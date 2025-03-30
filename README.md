@@ -20,9 +20,9 @@ Kubernetes is a fairly complicated beast. To help you get oriented, we've create
 
 To complete this assignment, you will need Docker, minikube, and kubectl.
 Installation is not simple, and is highly platform-dependent.
-We recommend you look at the setup scripts we've created to [help you along.](https://github.com/NYUAppSec/appsec-env-setup-script)
+We recommend you look at the setup script we created and is included in this repository, named 'setup.sh'. 
 
-Every operating system environment is different, we recommend you try and perform the assignment work within a Linux distribution. 
+Every operating system environment is different, we recommend you try and perform the assignment work within a Linux distribution, preferable Ubuntu.
 Rather than detail how to install this software on different platforms, below are links to relevant information on how to install these tools (if you chose not to use the scripts)
 at their official sites, as well as how to operate them. 
 
@@ -36,7 +36,7 @@ As in the previous assignments, we will be using Git and GitHub for submission,
 so please ensure you still have Git installed. Remember to continue to follow git
 best practices.
 
-# Image Versions
+#### Image Versions
 
 You may see something similar to the below:
 ```
@@ -53,18 +53,6 @@ Version mismatches like this are common! The ❗ symbol indicates a version mism
 When you are ready to begin the project, please use GitHub Classroom to create
 your repository for this assignment, and do your work in that repository. The
 repository name will look like `NYUAppSecCF/assignment-3-module-1-[username]`.
-
-## Get Latest updates
-
-It is always good to pull the latest updates for your repository before you continue your work.
-
-Use the following commands to pull the latest updates.
-```bash
-git remote add upstream https://github.com/NYUAppSec/appsec_hw3
-git fetch upstream
-git merge upstream/main --allow-unrelated-histories
-git push
-```
 
 ### Step 1.1: Rundown of Files
 
