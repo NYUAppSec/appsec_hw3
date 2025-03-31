@@ -190,7 +190,7 @@ Please complete the following:
 
 * As always, your commits need to be signed
 * Use GitHub Actions to automate deploying your Django container to [DockerHub](https://hub.docker.com/).
-* Create an account on DockerHub, if you haven't already. Ideally, you would store your login values in GitHub secrets. For local testing, it's okay just use environment variables, but assume this account can be compromised, do not put anything sensitive on your DockerHub or GitHub! Don't forget the git ignore, and be **very mindful** of what you push to DockerHub!
+* Create an account on DockerHub, if you haven't already. Ideally, you would store your login values in GitHub secrets. You really should use a DockerHub Access Token! For local testing, it's okay just use environment variables, but assume this account can be compromised, do not put anything sensitive on your DockerHub or GitHub! Don't forget the git ignore, and be **very mindful** of what you push to DockerHub!
 * This is a decent'ish template to follow [GitHub Action](https://github.com/docker/build-push-action) on how to set up an action to push an image to DockerHub. It is not perfect, and will require tweaking/modifiations. Push your Django Docker Image to a DockerHub repository.
 
 As always, limit access with Least Privilege. Grant only necessary permissions to users (you are a user btw, probably needs quite a few permissions) and services interacting with DockerHub - do all sevices push and pull?
