@@ -211,4 +211,8 @@ git push origin assign3mod1handin
 ```
 **DO NOT PUSH THIS TAG UNTIL YOU WANT TO BE GRADED**
 
+| ⚠️ **Use the NYU self-hosted runner** |
+|---|
+| To receive credit, your workflow (if you have one) **must run on our NYU self-hosted runner**. Using GitHub-hosted runners (e.g., `ubuntu-latest`) may incur charges and will earn a **zero**.<br><br>**✅ Correct:** `runs-on: self-hosted`<br>**❌ Do NOT use:** `runs-on: ubuntu-latest`<br><br>**Quick check:** In the job details, the **Runner** must show `self-hosted`. |
+
 **The autograder may take some time to process this assignment, as it rebuilds your Docker image and verifies the entire Kubernetes setup. Please be patient and allow Gradescope to finish before resubmitting.**
